@@ -1,0 +1,11 @@
+NAME
+  Libigl::stkLibiglCopyleft
+LIBRARY_NAME
+  stkLibiglCopyleft
+DEPENDS
+  VTK::FiltersCore
+  VTK::FiltersGeometry
+PRIVATE_DEPENDS
+  VTK::CommonCore
+  VTK::CommonSystem
+  VTK::FiltersGeneral

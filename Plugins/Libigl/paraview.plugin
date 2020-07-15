@@ -1,0 +1,9 @@
+NAME
+  LibiglCopyleftPlugins
+DESCRIPTION
+  Set of Libigl Copyleft plugins
+CONDITION
+REQUIRES_MODULES
+  VTK::FiltersCore
+  VTK::CommonDataModel
+  VTK::CommonExecutionModel
