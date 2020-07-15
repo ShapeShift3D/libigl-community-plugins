@@ -52,7 +52,6 @@ protected:
                             vtkInformationVector*) override;
 
   bool SkipPreconditions;
-  bool ComputeSurfaceIntersection;
 
 private:
   // needed but not implemented
