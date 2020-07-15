@@ -18,7 +18,7 @@ public:
   vtkPolyData* GetInputMeshB();
 
   enum Modes {
-      UNION = 0,
+      UNION = 1,
       INTERSECTION,
       DIFFERENCE,
       DIFFERENCE2

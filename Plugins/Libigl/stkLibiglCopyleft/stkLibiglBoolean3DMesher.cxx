@@ -199,14 +199,25 @@ int stkLibiglBoolean3DMesher::RequestData(vtkInformation *,
 	Eigen::MatrixXi outputMeshCells;
 	try
 	{
-		if (this->Mode >= Modes::UNION && this->Mode <= Modes::DIFFERENCE)
-		{
+		if (this->Mode == stkLibiglBoolean3DMesher::Modes::UNION) {
 			igl::copyleft::cgal::mesh_boolean(inputMeshAVerts, inputMeshACells,
 												inputMeshBVerts, inputMeshBCells,
-												static_cast<igl::MeshBooleanType>(this->Mode),
+												igl::MeshBooleanType::MESH_BOOLEAN_TYPE_UNION,
 												outputMeshVerts, outputMeshCells);
 		}
-		else if (this->Mode == Modes::DIFFERENCE2)
+		else if (this->Mode == stkLibiglBoolean3DMesher::Modes::INTERSECTION) {
+			igl::copyleft::cgal::mesh_boolean(inputMeshAVerts, inputMeshACells,
+												inputMeshBVerts, inputMeshBCells,
+												igl::MeshBooleanType::MESH_BOOLEAN_TYPE_INTERSECT,
+												outputMeshVerts, outputMeshCells);
+		}
+		else if (this->Mode == stkLibiglBoolean3DMesher::Modes::DIFFERENCE) {
+			igl::copyleft::cgal::mesh_boolean(inputMeshAVerts, inputMeshACells,
+												inputMeshBVerts, inputMeshBCells,
+												igl::MeshBooleanType::MESH_BOOLEAN_TYPE_MINUS,
+												outputMeshVerts, outputMeshCells);
+		}
+		else if (this->Mode == stkLibiglBoolean3DMesher::Modes::DIFFERENCE2)
 		{
 			igl::copyleft::cgal::mesh_boolean(inputMeshBVerts, inputMeshBCells,
 												inputMeshAVerts, inputMeshACells,
