@@ -30,7 +30,7 @@ endif(CGAL_FOUND)
 # ParaView 6.0 or later
 set(classes
   stkLibiglBoolean3DMesher
-  stkScalarClip
+  stkLibiglCopyLeftScalarClip
 )
 
 vtk_module_add_module(Libigl::stkLibiglCopyleft

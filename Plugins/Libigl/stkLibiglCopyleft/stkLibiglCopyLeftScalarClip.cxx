@@ -1,4 +1,4 @@
-#include "stkScalarClip.h"
+#include "stkLibiglCopyLeftScalarClip.h"
 #include "stkLibiglBoolean3DMesher.h"
 #include "vtkCellData.h"
 #include <vtkCellArray.h>
@@ -18,10 +18,10 @@
 #include <igl/read_triangle_mesh.h>
 #include <Eigen/Core>
 
-vtkStandardNewMacro(stkScalarClip);
+vtkStandardNewMacro(stkLibiglCopyLeftScalarClip);
 
 //----------------------------------------------------------------------------
-stkScalarClip::stkScalarClip()
+stkLibiglCopyLeftScalarClip::stkLibiglCopyLeftScalarClip()
 {
 	this->SetNumberOfInputPorts(1);
 	this->SetNumberOfOutputPorts(1);
@@ -29,7 +29,7 @@ stkScalarClip::stkScalarClip()
 }
 
 //----------------------------------------------------------------------------
-int stkScalarClip::RequestData(
+int stkLibiglCopyLeftScalarClip::RequestData(
 	vtkInformation* vtkNotUsed(request),
 	vtkInformationVector** inputVector,
 	vtkInformationVector* outputVector)
@@ -81,7 +81,6 @@ int stkScalarClip::RequestData(
 	const Eigen::RowVector3i res = (s * ((Vmax - Vmin) / (Vmax - Vmin).maxCoeff())).cast<int>();
 
 	// create grid
-	std::cout << "Creating grid..." <<std:: endl;
 	Eigen::MatrixXd GV(res(0) * res(1) * res(2), 3);
 	for (int zi = 0; zi < res(2); zi++)
 	{
@@ -99,7 +98,6 @@ int stkScalarClip::RequestData(
 		}
 	}
 	// compute values
-	std::cout << "Computing distances..." << std::endl;
 	Eigen::VectorXd S, B;
 	{
 		Eigen::VectorXi I;
@@ -109,17 +107,15 @@ int stkScalarClip::RequestData(
 		B = S;
 		std::for_each(B.data(), B.data() + B.size(), [](double& b) {b = (b > 0 ? 1 : (b < 0 ? -1 : 0)); });
 	}
-	std::cout << "Marching cubes..." << std::endl;
 	Eigen::MatrixXd SV, BV;
 	Eigen::MatrixXi SF, BF;
 	igl::copyleft::marching_cubes(S, GV, res(0), res(1), res(2), SV, SF);
 	igl::copyleft::marching_cubes(B, GV, res(0), res(1), res(2), BV, BF);
 
-	std::cout << R"(Usage:
-'1'  Show original mesh.
-'2'  Show marching cubes contour of signed distance.
-'3'  Show marching cubes contour of indicator function.
-)";
+
+// '1'  Show original mesh.
+// '2'  Show marching cubes contour of signed distance.
+// '3'  Show marching cubes contour of indicator function.
 
 
 	// Send new positions

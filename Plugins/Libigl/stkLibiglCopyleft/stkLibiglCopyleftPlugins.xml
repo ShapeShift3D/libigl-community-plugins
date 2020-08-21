@@ -34,21 +34,44 @@
                 </Documentation>
             </IntVectorProperty>
 
-            <IntVectorProperty command="SetSkipPreconditions"
-                               name="SkipPreconditions"
-                               label="Skip Preconditions"
-                               default_values="0"
-                               number_of_elements="1"
-                               panel_visibility="advanced">
+            <IntVectorProperty command="SetSkipPreconditions" name="SkipPreconditions" label="Skip Preconditions" default_values="0" number_of_elements="1" panel_visibility="advanced">
                 <Documentation>
                     Removes precondition checking
                 </Documentation>
                 <BooleanDomain name="bool" />
             </IntVectorProperty>
 
-            <OutputPort name="Boolean Result"
-                        index="0" />
+            <OutputPort name="Boolean Result" index="0" />
 
         </Proxy>
+ <!-- ==================================================================== -->
     </ProxyGroup>
+    <ProxyGroup name="filters">
+        <SourceProxy name="LibiglCopyLeftScalarClip" class="stkLibiglCopyLeftScalarClip" label="Libigl Copy left Scalar Clip Plugin">
+            <Documentation long_help="long help" short_help="short help"/>
+
+            <InputProperty name="Mesh" port_index="0" command="SetInputConnection">
+                <ProxyGroupDomain name="groups">
+                    <Group name="sources"/>
+                    <Group name="filters"/>
+                </ProxyGroupDomain>
+                <DataTypeDomain name="input_type">
+                    <DataType value="vtkPolyData"/>
+                </DataTypeDomain>
+            </InputProperty>
+
+            <IntVectorProperty name="key" command="Setkey" number_of_elements="1" default_values="2">
+                <Documentation>
+					This property indicates operation to execute.
+                </Documentation>
+            </IntVectorProperty>
+
+            <Hints>
+                <ShowInMenu category="Surface"/>
+            </Hints>
+
+        </SourceProxy>
+        <!-- ==================================================================== -->
+    </ProxyGroup>
+
 </ServerManagerConfiguration>
