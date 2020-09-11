@@ -10,6 +10,14 @@
 class STKLIBIGLCOPYLEFT_EXPORT stkLibiglBoolean3DMesher : public vtkPolyDataAlgorithm
 {
 public:
+
+
+    int ConvertVTKMeshToEigenVerts(vtkDataSet* object, Eigen::MatrixXd& vertices);
+    int ConvertVTKMeshToEigenCells(vtkDataSet* object, Eigen::MatrixXi& cells);
+    int ConvertEigenToVTKMesh(const Eigen::MatrixXd& verts, const Eigen::MatrixXi& cells,
+        vtkPointSet* outObject);
+
+
   // VTK requirements
   static stkLibiglBoolean3DMesher* New();
   vtkTypeMacro(stkLibiglBoolean3DMesher, vtkPolyDataAlgorithm);
@@ -41,9 +49,11 @@ public:
   vtkBooleanMacro(SkipPreconditions, bool);
   //@}
 
-protected:
-  stkLibiglBoolean3DMesher();
+   stkLibiglBoolean3DMesher();
   ~stkLibiglBoolean3DMesher(){}
+
+protected:
+ 
 
   int Mode;
 
@@ -58,9 +68,9 @@ private:
   stkLibiglBoolean3DMesher(const stkLibiglBoolean3DMesher&) = delete;
   void operator=(const stkLibiglBoolean3DMesher&) = delete;
 
-  int ConvertVTKMeshToEigenVerts(vtkDataSet* object, Eigen::MatrixXd& vertices);
+  /*int ConvertVTKMeshToEigenVerts(vtkDataSet* object, Eigen::MatrixXd& vertices);
   int ConvertVTKMeshToEigenCells(vtkDataSet* object, Eigen::MatrixXi& cells);
   int ConvertEigenToVTKMesh(const Eigen::MatrixXd& verts, const Eigen::MatrixXi& cells,
-      vtkPointSet* outObject);
+      vtkPointSet* outObject);*/
 };
 #endif
