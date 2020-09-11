@@ -45,8 +45,8 @@
 
         </Proxy>
  <!-- ==================================================================== -->
-    </ProxyGroup>
-    <ProxyGroup name="filters">
+ </ProxyGroup>
+ <ProxyGroup name="filters">
         <SourceProxy name="LibiglCopyLeftScalarClip" class="stkLibiglCopyLeftScalarClip" label="Libigl Copy left Scalar Clip Plugin">
             <Documentation long_help="long help" short_help="short help"/>
 
@@ -73,5 +73,7 @@
         </SourceProxy>
         <!-- ==================================================================== -->
     </ProxyGroup>
+    
+   
 
 </ServerManagerConfiguration>
