@@ -13,6 +13,6 @@ else()
     MODULE_FILES "${CMAKE_CURRENT_SOURCE_DIR}/stkLibiglCopyleft/vtk.module"
     MODULES Libigl::stkLibiglCopyleft
     XML_DOCUMENTATION OFF 
-	
+  
 )
 endif()

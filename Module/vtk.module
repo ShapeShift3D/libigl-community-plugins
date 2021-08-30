@@ -1,7 +1,9 @@
 NAME
-  Libigl::stkLibiglCopyleft
+  ParaView::stkLibiglCopyleft
 LIBRARY_NAME
   stkLibiglCopyleft
+DESCRIPTION
+  Libigl Copyleft sources and filters
 DEPENDS
   VTK::FiltersCore
   VTK::FiltersGeometry
@@ -10,3 +12,5 @@ PRIVATE_DEPENDS
   VTK::CommonCore
   VTK::CommonSystem
   VTK::FiltersGeneral
+TEST_DEPENDS
+  VTK::TestingCore
