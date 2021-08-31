@@ -1,21 +1,6 @@
-/**
- * \class stkLibiglBoolean3DMesher
- *
- * \brief This filter takes two inputs, inputMeshA and inputMeshB, of type vtkPolyData and applies
- *one of the four boolean operations (Union, Intersection, Difference1 (A - B) and Difference2 (B -
- *A)) to them. The user will have the option to select one of the four operations from a drop down
- *menu. The two inputs will be converted to Eigen matrices since vtkPolyData is not a valid input.
- *		 The converted inputs will then be fed into the appropriate function for execution.
- *The result of the function will be converted to a vtkPolyData and be outputted as such.
- *
- * Inputs: inputMeshA (port == 0, vtkPolyData), inputMeshB (port == 1, vtkPolyData)
- * Output: output (port == 0, vtkPolyData)
- *
- */
-
-//---------VTK----------------------------------
 #include "stkLibiglBoolean3DMesher.h"
 
+//---------VTK----------------------------------
 #include <vtkInformation.h>
 #include <vtkInformationVector.h>
 #include <vtkSmartPointer.h>
@@ -24,17 +9,15 @@
 #include <vtkPolyData.h>
 #include <vtkUnstructuredGrid.h>
 
+//---------libigl----------------------------------
 #include <igl/copyleft/cgal/mesh_boolean.h>
 #include <igl/copyleft/cgal/piecewise_constant_winding_number.h>
 
-//----------
-// Declare the plugin
 vtkStandardNewMacro(stkLibiglBoolean3DMesher);
 
 // ----------------------------------------------------------------------------
-// Gets the input
 int stkLibiglBoolean3DMesher::RequestData(vtkInformation* vtkNotUsed(request),
-  vtkInformationVector** inputVector, vtkInformationVector* outputVector)
+  vtkInformationVector** vtkNotUsed(inputVector), vtkInformationVector* outputVector)
 {
   //  Get the input and output data objects.
   //  Get the info objects
@@ -184,9 +167,7 @@ int stkLibiglBoolean3DMesher::ConvertVTKMeshToEigenVerts(
   vtkDataSet* object, Eigen::MatrixXd& vertices)
 {
   auto numVerts = object->GetNumberOfPoints();
-  auto numRows = vertices.rows(); // number of vertices
-  auto numCols = vertices.cols();
-  assert(numCols == 3);
+  assert(vertices.cols() == 3);
 
   double tmpPt[3];
   for (decltype(numVerts) i = 0; i < numVerts; ++i)

@@ -1,3 +1,17 @@
+/**
+ * @class stkLibiglBoolean3DMesher
+ * @brief Applies a boolean operation between two 3D surfaces.
+ *
+ * This filter takes two inputs, inputMeshA and inputMeshB, of type vtkPolyData and applies
+ * one of the four boolean operations (Union, Intersection, Difference1 (A - B) and Difference2 (B -
+ * A)) between them.
+ *
+ * Inputs: Surface Mesh A (port 0, vtkPolyData), Surface Mesh B (port 1, vtkPolyData)
+ * Output: Surface Mesh Result (port 0, vtkPolyData)
+ *
+ * @sa
+ * stkLibiglBoolean3DMesher
+ */
 #pragma once
 
 #include <stkLibiglBoolean3DMesherInterface.h>
@@ -5,11 +19,17 @@
 
 #include <Eigen/Dense>
 
-// Inherit from the desired filter
+/**
+ * @defgroup stkLibiglCopyleft stkLibiglCopyleft
+ *
+ */
+/**
+ * @ingroup stkLibiglCopyleft
+ *
+ */
 class STKLIBIGLCOPYLEFT_EXPORT stkLibiglBoolean3DMesher : public stkLibiglBoolean3DMesherInterface
 {
 public:
-  // VTK requirements
   static stkLibiglBoolean3DMesher* New();
   vtkTypeMacro(stkLibiglBoolean3DMesher, stkLibiglBoolean3DMesherInterface);
 
@@ -20,7 +40,6 @@ protected:
   virtual int RequestData(vtkInformation*, vtkInformationVector**, vtkInformationVector*) override;
 
 private:
-  // needed but not implemented
   stkLibiglBoolean3DMesher(const stkLibiglBoolean3DMesher&) = delete;
   void operator=(const stkLibiglBoolean3DMesher&) = delete;
 
