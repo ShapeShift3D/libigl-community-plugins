@@ -6,8 +6,6 @@ if (NOT TARGET igl_common)
   vtk_module_find_package(PACKAGE LIBIGL COMPONENTS CORE TRIANGLE PRIVATE)
 endif ()
 
-set(TRIANGLE_DIR "${LIBIGL_INCLUDE_DIR}/../external/triangle")
-
 vtk_module_find_package(PACKAGE CGAL VERSION 5.1.1 CONFIG_MODE PRIVATE)
 
 # Namespace adaptive to how the module is built (as a pure module or as plugins)
