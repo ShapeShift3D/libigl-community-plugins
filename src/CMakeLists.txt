@@ -30,8 +30,8 @@ vtk_module_add_module(${NAMESPACE}::stkLibiglCopyleft
 )
 
 set(xml_files
-  Resources/LibiglCopyleftFilters.xml
   Resources/LibiglCopyleftProxies.xml
+  Resources/LibiglCopyleftFilters.xml
 )
 
 paraview_add_server_manager_xmls(
