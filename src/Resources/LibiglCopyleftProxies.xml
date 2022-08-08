@@ -1,6 +1,6 @@
 <ServerManagerConfiguration>
     <ProxyGroup name="boolean_meshers">
-        <Proxy name="LibiglBoolean3DMesher" class="stkLibiglBoolean3DMesher" label="Boolean #4">
+        <Proxy name="LibiglBoolean3DMesher" class="stkLibiglBoolean3DMesher" label="Libigl Boolean">
 
             <InputProperty name="InputMeshA" port_index="0" command="SetInputConnection">
                 <ProxyGroupDomain name="groups">
