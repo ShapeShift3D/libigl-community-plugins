@@ -20,11 +20,7 @@
 #include <Eigen/Dense>
 
 /**
- * @defgroup stkLibiglCopyleft stkLibiglCopyleft
- *
- */
-/**
- * @ingroup stkLibiglCopyleft
+ * @ingroup stkLibiglCopyleftModule
  *
  */
 class STKLIBIGLCOPYLEFT_EXPORT stkLibiglBoolean3DMesher : public stkLibiglBoolean3DMesherInterface
