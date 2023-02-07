@@ -2,9 +2,9 @@ if (NOT Eigen3_FOUND)
   vtk_module_find_package(PACKAGE Eigen3 VERSION 3.3 CONFIG_MODE PRIVATE)
 endif ()
 
-if (NOT TARGET igl_common)
-  vtk_module_find_package(PACKAGE LIBIGL COMPONENTS CORE TRIANGLE PRIVATE)
-endif ()
+if (${LIBIGL_DIR} STREQUAL "")
+  message(FATAL_ERROR "Path to LIBIGL_DIR is empty")
+endif()
 
 vtk_module_find_package(PACKAGE CGAL VERSION 5.1.1 CONFIG_MODE PRIVATE)
 
@@ -60,7 +60,6 @@ if(CGAL_FOUND)
   endif(CGAL_ACTIVATE_CONCURRENCY)
 endif(CGAL_FOUND)
 
-vtk_module_include(${NAMESPACE}::stkLibiglCopyleft PRIVATE
-                    ${LIBIGL_INCLUDE_DIR})
+vtk_module_include(${NAMESPACE}::stkLibiglCopyleft PRIVATE ${LIBIGL_DIR}/include)
 
 vtk_module_link(${NAMESPACE}::stkLibiglCopyleft PUBLIC Eigen3::Eigen)
