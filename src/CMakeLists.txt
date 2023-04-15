@@ -1,8 +1,8 @@
-if (NOT Eigen3_FOUND)
+if(NOT Eigen3_FOUND)
   vtk_module_find_package(PACKAGE Eigen3 VERSION 3.3 CONFIG_MODE PRIVATE)
-endif ()
+endif()
 
-if (${LIBIGL_DIR} STREQUAL "")
+if(${LIBIGL_DIR} STREQUAL "")
   message(FATAL_ERROR "Path to LIBIGL_DIR is empty")
 endif()
 
@@ -14,7 +14,7 @@ SET(NAMESPACE "")
 if(ENABLE_NONFREE_MODULES)
   SET(NAMESPACE "ParaView")
 endif(ENABLE_NONFREE_MODULES)
-  
+
 if(ENABLE_NONFREE_PLUGINS)
   SET(NAMESPACE "Libigl")
 endif(ENABLE_NONFREE_PLUGINS)
@@ -23,29 +23,28 @@ endif(ENABLE_NONFREE_PLUGINS)
 set(classes
   stkLibiglBoolean3DMesher
 )
-  
+
 vtk_module_add_module(${NAMESPACE}::stkLibiglCopyleft
   CLASSES ${classes}
   PRIVATE_HEADERS ${private_headers}
 )
 
 set(xml_files
-  Resources/LibiglCopyleftProxies.xml
-  Resources/LibiglCopyleftFilters.xml
+  Resources/stkLibiglBoolean3DMesher.xml
 )
 
 paraview_add_server_manager_xmls(
-  XMLS  ${xml_files}
+  XMLS ${xml_files}
 )
 
 if(CGAL_FOUND)
-  include( ${CGAL_USE_FILE} )
-  
+  include(${CGAL_USE_FILE})
+
   # Activate concurrency ? (turned ON by default)
   option(CGAL_ACTIVATE_CONCURRENCY
-         "Enable concurrency"
-         ON)
-   
+    "Enable concurrency"
+    ON)
+
   vtk_module_definitions(${NAMESPACE}::stkLibiglCopyleft PRIVATE NOMINMAX)
 
   # Link with CGAL
@@ -53,6 +52,7 @@ if(CGAL_FOUND)
 
   if(CGAL_ACTIVATE_CONCURRENCY)
     find_package(TBB REQUIRED)
+
     if(TBB_FOUND)
       vtk_module_definitions(${NAMESPACE}::stkLibiglCopyleft PRIVATE CGAL_LINKED_WITH_TBB)
       vtk_module_link(${NAMESPACE}::stkLibiglCopyleft PRIVATE TBB::tbbmalloc TBB::tbb)
