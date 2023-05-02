@@ -2,11 +2,20 @@ if(NOT Eigen3_FOUND)
   vtk_module_find_package(PACKAGE Eigen3 VERSION 3.3 CONFIG_MODE PRIVATE)
 endif()
 
-if(${LIBIGL_DIR} STREQUAL "")
-  message(FATAL_ERROR "Path to LIBIGL_DIR is empty")
+vtk_module_find_package(PACKAGE CGAL VERSION 5.1.1 CONFIG_MODE PRIVATE)
+
+if(NOT DEFINED LIBIGL_DIR)
+  message(FATAL_ERROR "The CMake variable LIBIGL_DIR is undefined.")
 endif()
 
-vtk_module_find_package(PACKAGE CGAL VERSION 5.1.1 CONFIG_MODE PRIVATE)
+if(${LIBIGL_DIR} STREQUAL "")
+  message(FATAL_ERROR "The CMake variable LIBIGL_DIR is an empty string.")
+endif()
+
+if(NOT TARGET igl::core)
+  include(LibiglOptions)
+  add_subdirectory(${LIBIGL_DIR} ${CMAKE_BINARY_DIR}/bin/libigl)
+endif()
 
 # Namespace adaptive to how the module is built (as a pure module or as plugins)
 SET(NAMESPACE "")
