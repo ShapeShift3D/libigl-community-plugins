@@ -38,14 +38,6 @@ vtk_module_add_module(${NAMESPACE}::stkLibiglCopyleft
   PRIVATE_HEADERS ${private_headers}
 )
 
-set(xml_files
-  Resources/stkLibiglBoolean3DMesher.xml
-)
-
-paraview_add_server_manager_xmls(
-  XMLS ${xml_files}
-)
-
 if(CGAL_FOUND)
   include(${CGAL_USE_FILE})
 
