@@ -1,5 +1,5 @@
 NAME
-  ParaView::stkLibiglCopyleft
+  STK::LibiglCopyleft
 LIBRARY_NAME
   stkLibiglCopyleft
 DESCRIPTION
@@ -7,7 +7,7 @@ DESCRIPTION
 DEPENDS
   VTK::FiltersCore
   VTK::FiltersGeometry
-  ParaView::stkLibiglCopyleftInterface
+  STK::LibiglCopyleftInterface
 PRIVATE_DEPENDS
   VTK::CommonCore
   VTK::CommonSystem

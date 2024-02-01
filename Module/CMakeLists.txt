@@ -22,7 +22,7 @@ set(classes
   stkLibiglBoolean3DMesher
 )
 
-vtk_module_add_module(ParaView::stkLibiglCopyleft
+vtk_module_add_module(STK::LibiglCopyleft
   CLASSES ${classes}
   PRIVATE_HEADERS ${private_headers}
 )
@@ -35,10 +35,10 @@ if(CGAL_FOUND)
     "Enable concurrency"
     ON)
 
-  vtk_module_definitions(ParaView::stkLibiglCopyleft PRIVATE NOMINMAX)
+  vtk_module_definitions(STK::LibiglCopyleft PRIVATE NOMINMAX)
 
   # Link with CGAL
-  vtk_module_link(ParaView::stkLibiglCopyleft PUBLIC CGAL::CGAL)
+  vtk_module_link(STK::LibiglCopyleft PUBLIC CGAL::CGAL)
 
   if(CGAL_ACTIVATE_CONCURRENCY)
     if (NOT TARGET TBB::tbb)
@@ -46,12 +46,12 @@ if(CGAL_FOUND)
     endif ()
 
     if(TBB_FOUND)
-      vtk_module_definitions(ParaView::stkLibiglCopyleft PRIVATE CGAL_LINKED_WITH_TBB)
-      vtk_module_link(ParaView::stkLibiglCopyleft PRIVATE TBB::tbbmalloc TBB::tbb)
+      vtk_module_definitions(STK::LibiglCopyleft PRIVATE CGAL_LINKED_WITH_TBB)
+      vtk_module_link(STK::LibiglCopyleft PRIVATE TBB::tbbmalloc TBB::tbb)
     endif(TBB_FOUND)
   endif(CGAL_ACTIVATE_CONCURRENCY)
 endif(CGAL_FOUND)
 
-vtk_module_include(ParaView::stkLibiglCopyleft PRIVATE ${LIBIGL_DIR}/include)
+vtk_module_include(STK::LibiglCopyleft PRIVATE ${LIBIGL_DIR}/include)
 
-vtk_module_link(ParaView::stkLibiglCopyleft PUBLIC Eigen3::Eigen)
+vtk_module_link(STK::LibiglCopyleft PUBLIC Eigen3::Eigen)

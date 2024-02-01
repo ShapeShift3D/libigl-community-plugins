@@ -138,7 +138,7 @@ int stkLibiglBoolean3DMesher::RequestData(vtkInformation* vtkNotUsed(request),
         inputMeshBCells, igl::MeshBooleanType::MESH_BOOLEAN_TYPE_INTERSECT, outputMeshVerts,
         outputMeshCells);
     }
-    else if (this->Mode == stkLibiglBoolean3DMesher::Modes::DIFFERENCE)
+    else if (this->Mode == stkLibiglBoolean3DMesher::Modes::DIFFERENCE1)
     {
       igl::copyleft::cgal::mesh_boolean(inputMeshAVerts, inputMeshACells, inputMeshBVerts,
         inputMeshBCells, igl::MeshBooleanType::MESH_BOOLEAN_TYPE_MINUS, outputMeshVerts,
