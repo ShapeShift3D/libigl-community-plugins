@@ -15,15 +15,15 @@
 #pragma once
 
 #include <stkLibiglBoolean3DMesherInterface.h>
-#include <stkLibiglCopyleftModule.h>
+#include <stkLibiglCopyleftExtensionFiltersModule.h>
 
 #include <Eigen/Dense>
 
 /**
- * @ingroup stkLibiglCopyleftModule
+ * @ingroup stkLibiglCopyleftExtensionFiltersModule
  *
  */
-class STKLIBIGLCOPYLEFT_EXPORT stkLibiglBoolean3DMesher : public stkLibiglBoolean3DMesherInterface
+class STKLIBIGLCOPYLEFTEXTENSIONFILTERS_EXPORT stkLibiglBoolean3DMesher : public stkLibiglBoolean3DMesherInterface
 {
 public:
   static stkLibiglBoolean3DMesher* New();

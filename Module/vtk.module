@@ -1,7 +1,7 @@
 NAME
-  STK::LibiglCopyleft
+  STK::LibiglCopyleftExtensionFilters
 LIBRARY_NAME
-  stkLibiglCopyleft
+  stkLibiglCopyleftExtensionFilters
 DESCRIPTION
   Libigl Copyleft sources and filters
 DEPENDS

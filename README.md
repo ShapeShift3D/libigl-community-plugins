@@ -1,7 +1,7 @@
-LIBIGL Copy Left                      {#STKLIBIGLCopyLeftModuleDocumentation}
+LIBIGLCopyleftExtensionFilters                    {#STKLIBIGLCopyLeftExtensionFiltersModuleDocumentation}
 ===============================
 
 @moduledoc Libigl Copyleft Module (Cloud compute only)
 
-@defgroup stkLibiglCopyleftModule LIBIGL Copy Left
+@defgroup stkLibiglCopyleftExtensionFiltersModule LIBIGLCopyleftExtensionFilters
 Algorithms requiring LIBIGL library.
